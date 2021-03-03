@@ -1,11 +1,9 @@
 {
-  "name": "serve",
+  "name": "ssl-serve",
   "version": "6.5.8",
   "description": "Static file serving and directory listing",
   "scripts": {
-    "test": "yarn lint && NODE_ENV=test nyc ava",
-    "lint": "zeit-eslint --ext .jsx,.js .",
-    "lint-staged": "git diff --diff-filter=ACMRT --cached --name-only '*.js' '*.jsx' | xargs zeit-eslint"
+    "test": "ava"
   },
   "files": [
     "bin",
@@ -13,10 +11,10 @@
     "assets",
     "views"
   ],
-  "repository": "zeit/serve",
+  "repository": "timdaub/serve",
   "main": "./lib/api.js",
   "bin": {
-    "serve": "./bin/serve.js"
+    "ssl-serve": "./bin/serve.js"
   },
   "engines": {
     "node": ">=7.6.0"
@@ -24,18 +22,15 @@
   "keywords": [
     "now",
     "serve",
+    "ssl",
     "micro",
     "http-server"
   ],
-  "author": "leo",
+  "author": "Tim Daubenschuetz <tim.daubenschuetz@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@zeit/eslint-config-node": "0.2.13",
-    "@zeit/git-hooks": "0.1.4",
-    "ava": "0.25.0",
-    "eslint": "4.19.1",
-    "node-fetch": "2.1.2",
-    "nyc": "11.8.0",
+    "ava": "3.15.0",
+    "node-fetch": "2.6.1",
     "test-listen": "1.1.0"
   },
   "dependencies": {
@@ -49,7 +44,7 @@
     "detect-port": "1.2.3",
     "filesize": "3.6.1",
     "fs-extra": "6.0.1",
-    "handlebars": "4.0.11",
+    "handlebars": "4.7.7",
     "ip": "1.1.5",
     "micro": "9.3.1",
     "micro-compress": "1.0.0",
@@ -59,15 +54,6 @@
     "opn": "5.3.0",
     "path-is-inside": "1.0.2",
     "path-type": "3.0.0",
-    "send": "0.16.2",
-    "update-check": "1.5.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@zeit/eslint-config-node"
-    ]
-  },
-  "git": {
-    "pre-commit": "lint-staged"
+    "send": "0.16.2"
   }
 }

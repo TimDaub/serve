@@ -1,26 +1,20 @@
-# serve
+# ssl-serve
 
-[![Build Status](https://circleci.com/gh/zeit/serve.svg?&style=shield)](https://circleci.com/gh/zeit/serve)
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/micro/serve)
+## Note by Tim Daubenschütz
 
-Have you ever wanted to share a project on your network by running just a command? Then this module is exactly what you're looking for: It provides a neat interface for listing the directory's contents and switching into sub folders.
+During a re-write vercel removed the support for `serve`'s `--ssl` flag.
+However, a user named jwarby [pointed
+out](https://github.com/vercel/serve/issues/627#issuecomment-708460881) that
+version 6 still included it and was working fine. I noticed that version 6 had
+vulnerabilities though, so I decided to fork v6 of vercel/serve to remove them.
 
-In addition, it's also awesome when it comes to serving static sites!
-
-![screenshot](https://raw.githubusercontent.com/zeit/art/4bafffc43b38f3b796eb2f9071292d13d129a7d8/serve/example.png)
+I'm likely to maintain this this package as I'm planning on using it in my
+projects.
 
 ## Usage
 
-Firstly, install the package from [npm](https://npmjs.com/release) (you'll need at least Node.js 7.6.0):
-
 ```bash
-npm install -g serve
-```
-
-Alternatively, you can use [Yarn](https://yarnpkg.com/en/) to install it:
-
-```bash
-yarn global add serve
+npm install -g ssl-serve
 ```
 
 Once that's done, you can run this command inside your project's directory:
@@ -28,6 +22,11 @@ Once that's done, you can run this command inside your project's directory:
 ```bash
 serve [options] <path>
 ```
+
+### Serve Content Via HTTP and automatic SSL Cert generation
+
+Just use the `--ssl` option. Make sure to accept the self-signed certificate
+in your browser too.
 
 ### Options
 
@@ -39,7 +38,8 @@ serve help
 
 ### Authentication
 
-If you set the `--auth` flag, the package will look for a username and password in the `SERVE_USER` and `SERVE_PASSWORD` environment variables.
+If you set the `--auth` flag, the package will look for a username and password
+in the `SERVE_USER` and `SERVE_PASSWORD` environment variables.
 
 As an example, this is how such a command could look like:
 
@@ -72,16 +72,13 @@ server.stop()
 
 ## Contributing
 
-1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your own GitHub account and then [clone](https://help.github.com/articles/cloning-a-repository/) it to your local device
-2. Uninstall `serve` if it's already installed: `npm uninstall -g serve`
-3. Link it to the global module directory: `npm link`
+I'm happy to merge contributor's PRs.
 
-After that, you can use the `serve` command everywhere. [Here](https://github.com/zeit/serve/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+for+beginners%22)'s a list of issues that are great for beginners.
+## License
 
-## Credits
+See [License](./LICENSE).
 
-This project used to be called "list" and "micro-list". But thanks to [TJ Holowaychuk](https://github.com/tj) handing us the new name, it's now called "serve" (which is much more definite).
+## Authors
 
-## Author
-
-Leo Lamprecht ([@notquiteleo](https://twitter.com/notquiteleo)) - [ZEIT](https://zeit.co)
+Leo Lamprecht ([@notquiteleo](https://twitter.com/notquiteleo)) - [Vercel](https://vercel.com)
+Tim Daubenschuetz <tim.daubenschuetz@gmail.com>

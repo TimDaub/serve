@@ -10,7 +10,6 @@ const args = require('args');
 const compress = require('micro-compress');
 const detect = require('detect-port');
 const {coroutine} = require('bluebird');
-const checkForUpdate = require('update-check');
 const {red, bold} = require('chalk');
 const nodeVersion = require('node-version');
 const cert = require('openssl-self-signed-certificate');
@@ -81,38 +80,6 @@ let {port} = flags;
 
 detect(port).then(async open => {
 	const {NODE_ENV} = process.env;
-
-	if (NODE_ENV !== 'production') {
-		try {
-			const update = await checkForUpdate(pkg);
-
-			if (update) {
-				const message = `${bold(
-					'UPDATE AVAILABLE:'
-				)} The latest version of \`serve\` is ${update.latest}`;
-
-				console.log(
-					boxen(message, {
-						padding: 1,
-						borderColor: 'green',
-						margin: 1
-					})
-				);
-			}
-		} catch (err) {
-			console.log(
-				boxen(
-					`${bold(
-						'UPDATE CHECK FAILED:'
-					)} ${err.message}`, {
-						padding: 1,
-						borderColor: 'red',
-						margin: 1
-					}
-				)
-			);
-		}
-	}
 
 	let inUse = open !== port;
 
