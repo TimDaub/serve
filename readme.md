@@ -8,7 +8,7 @@ out](https://github.com/vercel/serve/issues/627#issuecomment-708460881) that
 version 6 still included it and was working fine. I noticed that version 6 had
 vulnerabilities though, so I decided to fork v6 of vercel/serve to remove them.
 
-I'm likely to maintain this this package as I'm planning on using it in my
+I'm likely to maintain this package as I'm planning on using it in my
 projects.
 
 ## Usage
